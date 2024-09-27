@@ -22,6 +22,9 @@
 		35A7545F2C946BE600666245 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7545E2C946BE600666245 /* ScheduleView.swift */; };
 		35A754652C94738000666245 /* TabBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A754642C94738000666245 /* TabBarContainer.swift */; };
 		35A754672C9477BB00666245 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A754662C9477BB00666245 /* HomeView.swift */; };
+		B5E128FE2CA68D9300768757 /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E128FD2CA68D9300768757 /* Anime.swift */; };
+		B5E129012CA68E0200768757 /* AnimeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E129002CA68E0200768757 /* AnimeAPIService.swift */; };
+		B5E129032CA68F5000768757 /* AnimeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E129022CA68F5000768757 /* AnimeListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		35A7545E2C946BE600666245 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		35A754642C94738000666245 /* TabBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContainer.swift; sourceTree = "<group>"; };
 		35A754662C9477BB00666245 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B5E128FD2CA68D9300768757 /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
+		B5E129002CA68E0200768757 /* AnimeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeAPIService.swift; sourceTree = "<group>"; };
+		B5E129022CA68F5000768757 /* AnimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +116,8 @@
 		3549E8282C941F72009A4672 /* wombini */ = {
 			isa = PBXGroup;
 			children = (
+				B5E128FC2CA68CC600768757 /* Controllers */,
+				B5E128FB2CA68C5900768757 /* Models */,
 				3549E8572C94421D009A4672 /* CustomBarView.swift */,
 				35A7545C2C946BD400666245 /* TrendingView.swift */,
 				3549E8292C941F72009A4672 /* wombiniApp.swift */,
@@ -149,6 +157,23 @@
 				3549E8462C941F74009A4672 /* wombiniUITestsLaunchTests.swift */,
 			);
 			path = wombiniUITests;
+			sourceTree = "<group>";
+		};
+		B5E128FB2CA68C5900768757 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B5E128FD2CA68D9300768757 /* Anime.swift */,
+				B5E129002CA68E0200768757 /* AnimeAPIService.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B5E128FC2CA68CC600768757 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5E129022CA68F5000768757 /* AnimeListViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,7 +315,10 @@
 				3549E82A2C941F72009A4672 /* wombiniApp.swift in Sources */,
 				35A7545F2C946BE600666245 /* ScheduleView.swift in Sources */,
 				35A7545B2C946B4100666245 /* FavoriteView.swift in Sources */,
+				B5E129032CA68F5000768757 /* AnimeListViewController.swift in Sources */,
+				B5E129012CA68E0200768757 /* AnimeAPIService.swift in Sources */,
 				3549E8562C942A0B009A4672 /* SplashScreenView.swift in Sources */,
+				B5E128FE2CA68D9300768757 /* Anime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
