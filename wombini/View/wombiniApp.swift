@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct wombiniApp: App {
+struct WombiniApp: App {
     var body: some Scene {
         WindowGroup {
             SplashScreenView()

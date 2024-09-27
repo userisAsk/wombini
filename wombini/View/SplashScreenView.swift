@@ -1,23 +1,15 @@
-//
-//  SplashScreenView.swift
-//  wombini
-//
-//  Created by Kyriann Paille on 13/09/2024.
-//
-
 import SwiftUI
 
 struct SplashScreenView: View {
-    
     @State private var isActive = false
-    @State private var size  = 0.8
+    @State private var size = 0.8
     @State private var opacity = 0.5
     
     var body: some View {
-        if isActive {
-            ContentView()
-        } else {
-            VStack {
+        Group {
+            if isActive {
+                ContentView() // Assurez-vous que HomeView peut être affiché correctement
+            } else {
                 VStack {
                     Image(systemName: "hare.fill")
                         .font(.system(size: 80))
@@ -33,15 +25,12 @@ struct SplashScreenView: View {
                         self.size = 0.9
                         self.opacity = 1.0
                     }
-                }
-            }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.3) {
-                    self.isActive = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.3) {
+                        self.isActive = true
+                    }
                 }
             }
         }
-      
     }
 }
 
