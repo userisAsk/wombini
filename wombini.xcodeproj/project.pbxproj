@@ -116,18 +116,9 @@
 		3549E8282C941F72009A4672 /* wombini */ = {
 			isa = PBXGroup;
 			children = (
+				357CCFAC2CA6967D0087617F /* View */,
 				B5E128FC2CA68CC600768757 /* Controllers */,
 				B5E128FB2CA68C5900768757 /* Models */,
-				3549E8572C94421D009A4672 /* CustomBarView.swift */,
-				35A7545C2C946BD400666245 /* TrendingView.swift */,
-				3549E8292C941F72009A4672 /* wombiniApp.swift */,
-				3549E82B2C941F72009A4672 /* ContentView.swift */,
-				35A7545E2C946BE600666245 /* ScheduleView.swift */,
-				35A7545A2C946B4100666245 /* FavoriteView.swift */,
-				35A754642C94738000666245 /* TabBarContainer.swift */,
-				35A754662C9477BB00666245 /* HomeView.swift */,
-				35A754582C94671E00666245 /* ProfileView.swift */,
-				3549E8552C942A0B009A4672 /* SplashScreenView.swift */,
 				3549E82D2C941F74009A4672 /* Assets.xcassets */,
 				3549E82F2C941F74009A4672 /* Preview Content */,
 			);
@@ -157,6 +148,23 @@
 				3549E8462C941F74009A4672 /* wombiniUITestsLaunchTests.swift */,
 			);
 			path = wombiniUITests;
+			sourceTree = "<group>";
+		};
+		357CCFAC2CA6967D0087617F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3549E8572C94421D009A4672 /* CustomBarView.swift */,
+				35A7545C2C946BD400666245 /* TrendingView.swift */,
+				3549E8292C941F72009A4672 /* wombiniApp.swift */,
+				3549E82B2C941F72009A4672 /* ContentView.swift */,
+				35A7545E2C946BE600666245 /* ScheduleView.swift */,
+				35A7545A2C946B4100666245 /* FavoriteView.swift */,
+				35A754642C94738000666245 /* TabBarContainer.swift */,
+				35A754662C9477BB00666245 /* HomeView.swift */,
+				35A754582C94671E00666245 /* ProfileView.swift */,
+				3549E8552C942A0B009A4672 /* SplashScreenView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		B5E128FB2CA68C5900768757 /* Models */ = {

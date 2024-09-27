@@ -1,27 +1,23 @@
-//
-//  Anime.swift
-//  wombini
-//
-//  Created by Jeremie Gavin on 9/27/24.
-//
-
 import Foundation
 
-struct Anime: Identifiable, Codable {
-    let id: Int
-    let title: String
-    let mainPicture: MainPicture
-    
-    struct MainPicture: Codable {
-        let medium: String
+struct AnimeResponse: Codable {
+    let data: AnimeData?
+}
+
+struct AnimeData: Codable {
+    let Media: AnimeModel
+}
+
+struct AnimeModel: Codable {
+    let title: AnimeTitle
+    let description: String
+    let coverImage: AnimeCoverImage
+
+    struct AnimeTitle: Codable {
+        let romaji: String
+    }
+
+    struct AnimeCoverImage: Codable {
         let large: String
     }
-}
-
-struct AnimeResponse: Codable {
-    let data: [AnimeNode]
-}
-
-struct AnimeNode: Codable {
-    let node: Anime
 }

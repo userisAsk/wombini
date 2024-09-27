@@ -1,53 +1,50 @@
-//
-//  AnimeAPIService.swift
-//  wombini
-//
-//  Created by Jeremie Gavin on 9/27/24.
-//
-
 import Foundation
 
 class AnimeAPIService {
-    private let baseURL = "https://api.myanimelist.net/v2"
-    private let clientID = "VOTRE_CLIENT_ID"
-    
-    func fetchAnimeList(completion: @escaping (Result<[Anime], Error>) -> Void) {
-        let urlString = "\(baseURL)/anime?limit=10"
-        guard let url = URL(string: urlString) else {
-            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
-            return
+    static let shared = AnimeAPIService() // Déclaration du singleton
+    private init() {} // Prévenir l'initialisation en dehors de la classe
+
+    func fetchAnimeData(completion: @escaping (AnimeModel?) -> Void) {
+        let query = """
+        {
+            Media(id: 16498, type: ANIME) {
+                title {
+                    romaji
+                }
+                description
+                coverImage {
+                    large
+                }
+            }
         }
-        
+        """
+
+        guard let url = URL(string: "https://graphql.anilist.co/") else { return }
         var request = URLRequest(url: url)
-        request.addValue(clientID, forHTTPHeaderField: "X-MAL-CLIENT-ID")
-        
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let jsonBody = ["query": query]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: jsonBody)
+
         URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let animeResponse = try decoder.decode(AnimeResponse.self, from: data)
-                completion(.success(animeResponse.data))
-            } catch {
-                completion(.failure(error))
+            if let data = data {
+                do {
+                    let decodedResponse = try JSONDecoder().decode(AnimeResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(decodedResponse.data?.Media)
+                    }
+                } catch {
+                    print("Erreur lors du parsing JSON: \(error)")
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                }
+            } else {
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
             }
         }.resume()
     }
-}
-
-struct AnimeResponse: Codable {
-    let data: [AnimeData]
-}
-
-struct AnimeData: Codable {
-    let node: Anime
 }
