@@ -4,10 +4,10 @@ class AnimeAPIService {
     static let shared = AnimeAPIService() // Déclaration du singleton
     private init() {} // Prévenir l'initialisation en dehors de la classe
 
-    func fetchAnimeData(completion: @escaping (AnimeModel?) -> Void) {
+    func fetchAnimeData(animeId: Int, completion: @escaping (AnimeModel?) -> Void) {
         let query = """
         {
-            Media(id: 16498, type: ANIME) {
+            Media(id: \(animeId), type: ANIME) {
                 title {
                     romaji
                 }

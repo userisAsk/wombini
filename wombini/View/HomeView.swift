@@ -1,67 +1,89 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var controller = AnimeListViewController()
-    @State private var showAnimeDetails = false // Variable d'état pour contrôler l'affichage
+    @StateObject private var controller = AnimeListViewController() // État de l'objet pour le contrôleur
+    @State private var currentIndex = 0 // Index pour le slider
 
     var body: some View {
-        ZStack(alignment: .topLeading) {
+        ZStack {
+            // Couleur de fond
             Color.black
                 .edgesIgnoringSafeArea(.all)
 
-            VStack(alignment: .leading) {
-                // Afficher l'image et les informations sur Attack on Titan uniquement si showAnimeDetails est true
-                if showAnimeDetails, let anime = controller.anime {
-                    // Afficher l'image de couverture
-                    if let url = URL(string: anime.coverImage.large) {
-                        AsyncImage(url: url) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 150, height: 200)
-                                .padding(.top, 10) // Ajoute un peu de padding en haut
-                        } placeholder: {
-                            ProgressView() // Afficher un loader pendant le chargement de l'image
-                        }
+            // Slider d'animes
+            TabView(selection: $currentIndex) {
+                // Vérifier que animeList contient des éléments
+                if !controller.animeList.isEmpty {
+                    ForEach(controller.animeList.indices, id: \.self) { index in
+                        // Créer une vue pour chaque anime
+                        AnimeView(anime: controller.animeList[index])
+                            .tag(index) // Taguer chaque vue avec son index
                     }
-
-                    // Afficher le titre
-                    Text(anime.title.romaji)
-                        .font(.largeTitle)
+                } else {
+                    // Afficher un message si aucune donnée n'est disponible
+                    Text("Aucun anime disponible.")
                         .foregroundColor(.white)
-                        .padding(.top, 10)
-
-                    // Afficher la description
-                    Text(anime.description)
-                        .font(.body)
-                        .foregroundColor(.gray)
-                        .padding(.top, 10)
-                        .lineLimit(5) // Limiter le nombre de lignes affichées
+                        .font(.title)
                 }
-
-                Spacer()
-                    .frame(height: 20) // Réduire l'espace ici si nécessaire
-
-                // Bouton pour récupérer les données
-                Button(action: {
-                    controller.fetchAnimeData()
-                    showAnimeDetails = true // Afficher les détails après le clic sur le bouton
-                }) {
-                    Text("Fetch Attack on Titan Data")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .padding(.bottom, 20) // Ajoute un peu de padding en bas
             }
-            .padding(.leading, 10) // Ajoute un peu de padding à gauche
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always)) // Style de page pour le TabView
+            .padding(.top, 50) // Ajuste la position du slider
+        }
+        .onAppear {
+            controller.fetchAnimeData() // Récupérer les données des animes lors de l'apparition de la vue
         }
     }
 }
 
+// Vue personnalisée pour chaque anime
+struct AnimeView: View {
+    var anime: AnimeModel? // Le modèle d'anime
+
+    var body: some View {
+        VStack {
+            // Détails de l'anime
+            if let anime = anime {
+                ZStack(alignment: .bottomLeading) {
+                    // Afficher l'image de couverture avec une largeur presque maximale
+                    if let url = anime.coverImage.large, let imageUrl = URL(string: url) {
+                        AsyncImage(url: imageUrl) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill) // Remplir l'espace tout en gardant les proportions
+                                .frame(width: UIScreen.main.bounds.width * 0.95, height: 200) // Largeur presque totale de l'écran et hauteur fixe
+                                .clipped() // Élaguer l'image pour éviter les débordements
+                                .cornerRadius(15) // Coin arrondi
+                        } placeholder: {
+                            ProgressView()
+                        }
+                    }
+
+                    // Titre de l'anime sans fond avec taille de police réduite
+                    Text(anime.title.romaji)
+                        .font(.headline) // Réduit la taille du texte
+                        .foregroundColor(.white)
+                        .padding(10)
+                        .padding([.bottom, .leading], 10) // Padding en bas et à gauche
+                }
+                .padding()
+                .background(Color.black.opacity(0.7)) // Ajouter un fond semi-transparent pour le texte
+                .cornerRadius(10)
+                .padding()
+            } else {
+                // Afficher un message si aucun anime n'est disponible
+                Text("Aucun anime disponible.")
+                    .foregroundColor(.white)
+                    .font(.title)
+            }
+        }
+    }
+}
+
+// Prévisualisation
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environment(\.colorScheme, .dark)
+            .previewLayout(.sizeThatFits)
     }
 }
