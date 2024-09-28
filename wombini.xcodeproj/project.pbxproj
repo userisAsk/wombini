@@ -14,6 +14,7 @@
 		3549E8452C941F74009A4672 /* wombiniUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549E8442C941F74009A4672 /* wombiniUITests.swift */; };
 		3549E8472C941F74009A4672 /* wombiniUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549E8462C941F74009A4672 /* wombiniUITestsLaunchTests.swift */; };
 		35A754672C9477BB00666245 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A754662C9477BB00666245 /* HomeView.swift */; };
+		35BC30DA2CA7FE8F00D1E488 /* AnimeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BC30D92CA7FE8F00D1E488 /* AnimeGridView.swift */; };
 		B511C2052CA7F89200409DE4 /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2042CA7F89200409DE4 /* Anime.swift */; };
 		B511C2072CA7F8A300409DE4 /* AnimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2062CA7F8A300409DE4 /* AnimeController.swift */; };
 		B511C2092CA7F8B200409DE4 /* AnimeListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2082CA7F8B200409DE4 /* AnimeListResponse.swift */; };
@@ -48,6 +49,7 @@
 		3549E8442C941F74009A4672 /* wombiniUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wombiniUITests.swift; sourceTree = "<group>"; };
 		3549E8462C941F74009A4672 /* wombiniUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wombiniUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		35A754662C9477BB00666245 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		35BC30D92CA7FE8F00D1E488 /* AnimeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeGridView.swift; sourceTree = "<group>"; };
 		B511C2042CA7F89200409DE4 /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
 		B511C2062CA7F8A300409DE4 /* AnimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeController.swift; sourceTree = "<group>"; };
 		B511C2082CA7F8B200409DE4 /* AnimeListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListResponse.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			children = (
 				35A754662C9477BB00666245 /* HomeView.swift */,
 				B511C20A2CA7F8CA00409DE4 /* AnimeDetailView.swift */,
+				35BC30D92CA7FE8F00D1E488 /* AnimeGridView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				3549E82A2C941F72009A4672 /* wombiniApp.swift in Sources */,
 				B511C20B2CA7F8CA00409DE4 /* AnimeDetailView.swift in Sources */,
 				B511C2092CA7F8B200409DE4 /* AnimeListResponse.swift in Sources */,
+				35BC30DA2CA7FE8F00D1E488 /* AnimeGridView.swift in Sources */,
 				B511C2072CA7F8A300409DE4 /* AnimeController.swift in Sources */,
 				B511C2052CA7F89200409DE4 /* Anime.swift in Sources */,
 			);

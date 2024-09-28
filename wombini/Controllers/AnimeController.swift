@@ -16,4 +16,19 @@ class AnimeController: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: &$animeList)
     }
+    
+    func fetchAllAnimeData() {
+        guard let url = URL(string: "https://api.jikan.moe/v4/anime") else { return }
+        
+        URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .decode(type: AnimeListResponse.self, decoder: JSONDecoder())
+            .map { $0.animes }
+            .replaceError(with: [])
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$animeList)
+    }
+    
+    
+    
 }
