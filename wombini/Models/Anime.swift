@@ -1,23 +1,15 @@
 import Foundation
 
-struct AnimeResponse: Codable {
-    let data: AnimeData?
-}
+struct Anime: Codable, Identifiable {
+    let id: Int
+    let title: String
+    let images: AnimeImages
 
-struct AnimeData: Codable {
-    let Media: AnimeModel
-}
-
-struct AnimeModel: Codable {
-    let title: AnimeTitle
-    let description: String
-    let coverImage: AnimeCoverImage
-
-    struct AnimeTitle: Codable {
-        let romaji: String
+    struct AnimeImages: Codable {
+        let jpg: ImageURL
     }
 
-    struct AnimeCoverImage: Codable {
-        let large: String
+    struct ImageURL: Codable {
+        let image_url: String
     }
 }
