@@ -19,6 +19,7 @@
 		B511C2072CA7F8A300409DE4 /* AnimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2062CA7F8A300409DE4 /* AnimeController.swift */; };
 		B511C2092CA7F8B200409DE4 /* AnimeListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2082CA7F8B200409DE4 /* AnimeListResponse.swift */; };
 		B511C20B2CA7F8CA00409DE4 /* AnimeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C20A2CA7F8CA00409DE4 /* AnimeDetailView.swift */; };
+		B511C2132CA809A100409DE4 /* PopularAnimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2122CA809A100409DE4 /* PopularAnimeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		B511C2062CA7F8A300409DE4 /* AnimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeController.swift; sourceTree = "<group>"; };
 		B511C2082CA7F8B200409DE4 /* AnimeListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListResponse.swift; sourceTree = "<group>"; };
 		B511C20A2CA7F8CA00409DE4 /* AnimeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailView.swift; sourceTree = "<group>"; };
+		B511C2122CA809A100409DE4 /* PopularAnimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularAnimeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				35A754662C9477BB00666245 /* HomeView.swift */,
 				B511C20A2CA7F8CA00409DE4 /* AnimeDetailView.swift */,
 				35BC30D92CA7FE8F00D1E488 /* AnimeGridView.swift */,
+				B511C2122CA809A100409DE4 /* PopularAnimeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				35A754672C9477BB00666245 /* HomeView.swift in Sources */,
+				B511C2132CA809A100409DE4 /* PopularAnimeView.swift in Sources */,
 				3549E82A2C941F72009A4672 /* wombiniApp.swift in Sources */,
 				B511C20B2CA7F8CA00409DE4 /* AnimeDetailView.swift in Sources */,
 				B511C2092CA7F8B200409DE4 /* AnimeListResponse.swift in Sources */,

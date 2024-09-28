@@ -11,7 +11,7 @@ import SwiftUI
 struct WombiniApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            PopularAnimeView()
         }
     }
 }

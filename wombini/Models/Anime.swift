@@ -1,10 +1,10 @@
-import Foundation
-
 struct Anime: Codable, Identifiable {
     let id: Int
     let title: String
     let images: AnimeImages
-    let releaseDate: String // Ajout du champ pour la date de sortie
+    let releaseDate: String // Added for release date
+    let score: Double? // Added for popularity score
+    let seasonYear: String? // Added for season year
 
     struct AnimeImages: Codable {
         let jpg: ImageURL

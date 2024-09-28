@@ -3,7 +3,9 @@ struct AnimeListResponse: Codable {
         let mal_id: Int
         let title: String
         let images: Anime.AnimeImages
-        let aired: AiredDates // Ajoutez cette structure pour la date
+        let score: Double? // Popularity score
+        let aired: AiredDates // For release dates
+        let seasonYear: Int? // Added for season year
 
         struct AiredDates: Codable {
             let from: String?
@@ -15,9 +17,8 @@ struct AnimeListResponse: Codable {
         }
 
         var releaseDate: String? {
-            // Extraire l'année de la date
             if let airedFrom = aired.from {
-                let year = airedFrom.prefix(4) // Récupérer les 4 premiers caractères
+                let year = airedFrom.prefix(4)
                 return String(year)
             }
             return nil
@@ -27,7 +28,15 @@ struct AnimeListResponse: Codable {
     let data: [AnimeData]
 
     var animes: [Anime] {
-        data.map { Anime(id: $0.mal_id, title: $0.title, images: $0.images, releaseDate: $0.releaseDate ?? "N/A") }
+        data.map {
+            Anime(
+                id: $0.mal_id,
+                title: $0.title,
+                images: $0.images,
+                releaseDate: $0.releaseDate ?? "N/A",
+                score: $0.score,
+                seasonYear: $0.seasonYear != nil ? String($0.seasonYear!) : nil
+            )
+        }
     }
 }
-
