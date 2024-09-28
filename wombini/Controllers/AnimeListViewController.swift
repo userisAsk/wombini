@@ -7,22 +7,22 @@ class AnimeListViewController: ObservableObject {
 
     func fetchAnimeData() {
         let animeIds = [16498, 21, 20, 30276] // Liste des IDs d'anime
-
         let group = DispatchGroup()
 
         for id in animeIds {
-            group.enter() // Entrer dans le groupe pour chaque anime
+            group.enter()
             AnimeAPIService.shared.fetchAnimeData(animeId: id) { [weak self] anime in
                 if let anime = anime {
-                    self?.animeList.append(anime) // Ajouter l'anime à la liste
+                    self?.animeList.append(anime)
+                    print("Anime récupéré: \(anime.title.romaji)") // Ajout d'une impression ici
                 }
-                group.leave() // Quitter le groupe
+                group.leave()
             }
         }
 
         group.notify(queue: .main) {
-            // Actions à réaliser après que tous les appels aient été effectués, si nécessaire
-            print("Tous les animes ont été récupérés.")
+            print("Tous les animes ont été récupérés. Nombre total: \(self.animeList.count)")
         }
     }
+
 }

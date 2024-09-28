@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		352EE2682CA6D73300F2FB9E /* AnimeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352EE2672CA6D73300F2FB9E /* AnimeDetailView.swift */; };
 		3549E82A2C941F72009A4672 /* wombiniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549E8292C941F72009A4672 /* wombiniApp.swift */; };
 		3549E82C2C941F72009A4672 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549E82B2C941F72009A4672 /* ContentView.swift */; };
 		3549E82E2C941F74009A4672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3549E82D2C941F74009A4672 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		352EE2672CA6D73300F2FB9E /* AnimeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailView.swift; sourceTree = "<group>"; };
 		3549E8262C941F72009A4672 /* wombini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wombini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3549E8292C941F72009A4672 /* wombiniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wombiniApp.swift; sourceTree = "<group>"; };
 		3549E82B2C941F72009A4672 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				35A754662C9477BB00666245 /* HomeView.swift */,
 				35A754582C94671E00666245 /* ProfileView.swift */,
 				3549E8552C942A0B009A4672 /* SplashScreenView.swift */,
+				352EE2672CA6D73300F2FB9E /* AnimeDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				352EE2682CA6D73300F2FB9E /* AnimeDetailView.swift in Sources */,
 				35A7545D2C946BD400666245 /* TrendingView.swift in Sources */,
 				3549E82C2C941F72009A4672 /* ContentView.swift in Sources */,
 				3549E8582C94421D009A4672 /* CustomBarView.swift in Sources */,
