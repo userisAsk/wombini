@@ -11,30 +11,32 @@ struct AnimeGridView: View {
         
         LazyVGrid(columns: columns, spacing: 20) {
             ForEach(animeList) { anime in
-                VStack {
-                    AsyncImage(url: URL(string: anime.images.jpg.image_url)) { image in
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(height: 200)
-                            .clipped()
-                            .cornerRadius(10)
-                    } placeholder: {
-                        ProgressView()
+                NavigationLink(destination: AnimeDetailView(anime: anime)) {
+                    VStack {
+                        AsyncImage(url: URL(string: anime.images.jpg.image_url)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(height: 200)
+                                .clipped()
+                                .cornerRadius(10)
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        
+                        Text(anime.title)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
+                        
+                        // Affichez l'année de sortie
+                        Text(anime.releaseDate)
+                            .font(.subheadline)
+                            .foregroundColor(.white)
+                            .multilineTextAlignment(.center)
                     }
-                    
-                    Text(anime.title)
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
-                    
-                    // Affichez l'année de sortie
-                    Text(anime.releaseDate) // Utiliser directement la propriété releaseDate
-                        .font(.subheadline)
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
+                    .padding()
                 }
-                .padding()
             }
         }
     }

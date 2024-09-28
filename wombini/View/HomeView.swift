@@ -29,78 +29,80 @@ struct HomeView: View {
     ]
 
     var body: some View {
-        ZStack {
-            Color.customBackgroundColor
-                .edgesIgnoringSafeArea(.all)
+        NavigationView { // Ajoutez NavigationView ici
+            ZStack {
+                Color.customBackgroundColor
+                    .edgesIgnoringSafeArea(.all)
 
-            ScrollView { // Wrap the VStack in a ScrollView
-                VStack {
-                    // Logo
-                    HStack {
-                        Image("wblogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200, height: 200)
-                            .padding(.leading, 20)
-                            .offset(x: -55, y: -10)
-                        Spacer()
-                    }
+                ScrollView { // Wrap the VStack in a ScrollView
+                    VStack {
+                        // Logo
+                        HStack {
+                            Image("wblogo")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 200, height: 200)
+                                .padding(.leading, 20)
+                                .offset(x: -55, y: -10)
+                            Spacer()
+                        }
 
-                    // Slider for anime
-                    TabView(selection: $currentIndex) {
-                        if !controller.animeList.isEmpty {
-                            ForEach(controller.animeList.indices, id: \.self) { index in
-                                AnimeView(anime: controller.animeList[index])
-                                    .tag(index)
+                        // Slider for anime
+                        TabView(selection: $currentIndex) {
+                            if !controller.animeList.isEmpty {
+                                ForEach(controller.animeList.indices, id: \.self) { index in
+                                    AnimeView(anime: controller.animeList[index])
+                                        .tag(index)
+                                }
+                            } else {
+                                Text("Aucun anime disponible.")
+                                    .foregroundColor(.white)
+                                    .font(.title)
                             }
+                        }
+                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                        .frame(height: 300)
+                        .onReceive(timer) { _ in
+                            if !controller.animeList.isEmpty {
+                                withAnimation(.easeInOut(duration: 0.5)) {
+                                    currentIndex = (currentIndex + 1) % controller.animeList.count
+                                }
+                            }
+                        }
+
+                        // Page Control
+                        HStack {
+                            Spacer()
+                            PageControl(numberOfPages: controller.animeList.count, currentPage: $currentIndex)
+                                .frame(width: UIScreen.main.bounds.width * 0.95)
+                            Spacer()
+                        }
+
+                        // Genre List
+                        GenreScrollView(genres: genres)
+                        
+                        // Filter Buttons
+                        FilterButtonsView()
+                        
+                        if !controller.animeList.isEmpty {
+                            AnimeGridView(animeList: controller.animeList)
                         } else {
                             Text("Aucun anime disponible.")
                                 .foregroundColor(.white)
                                 .font(.title)
                         }
-                    }
-                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                    .frame(height: 300)
-                    .onReceive(timer) { _ in
-                        if !controller.animeList.isEmpty {
-                            withAnimation(.easeInOut(duration: 0.5)) {
-                                currentIndex = (currentIndex + 1) % controller.animeList.count
-                            }
-                        }
-                    }
 
-                    // Page Control
-                    HStack {
-                        Spacer()
-                        PageControl(numberOfPages: controller.animeList.count, currentPage: $currentIndex)
-                            .frame(width: UIScreen.main.bounds.width * 0.95)
                         Spacer()
                     }
-
-                    // Genre List
-                    GenreScrollView(genres: genres)
-                    
-                    // Filter Buttons
-                    FilterButtonsView()
-                    
-                    if !controller.animeList.isEmpty {
-                        AnimeGridView(animeList: controller.animeList)
-                    } else {
-                        Text("Aucun anime disponible.")
-                            .foregroundColor(.white)
-                            .font(.title)
-                    }
-
-                    Spacer()
+                    .padding(.bottom) // Add padding to avoid content being cut off
                 }
-                .padding(.bottom) // Add padding to avoid content being cut off
             }
-        }
-        .onAppear {
-            controller.fetchAnimeData()
-            controller.fetchAllAnimeData()
-            if !controller.animeList.isEmpty {
-                currentIndex = controller.animeList.count / 2
+            .onAppear {
+                controller.fetchAnimeData()
+                controller.fetchAllAnimeData()
+                if !controller.animeList.isEmpty {
+                    currentIndex = controller.animeList.count / 2
+                }
             }
         }
     }
