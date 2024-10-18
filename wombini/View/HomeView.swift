@@ -85,13 +85,8 @@ struct HomeView: View {
                         // Filter Buttons
                         FilterButtonsView(controller: controller)
                         
-                        if !controller.animeList.isEmpty {
-                            AnimeGridView(animeList: controller.animeList)
-                        } else {
-                            Text("Aucun anime disponible.")
-                                .foregroundColor(.white)
-                                .font(.title)
-                        }
+                        // Affichage de tous les animes
+                        AnimeGridView(animeList: controller.animeList)
 
                         Spacer()
                     }
@@ -99,7 +94,8 @@ struct HomeView: View {
                 }
             }
             .onAppear {
-                controller.fetchAllAnimeData()
+                controller.fetchAllAnimeData() // Chargement initial des données
+
                 if !controller.animeList.isEmpty {
                     currentIndex = controller.animeList.count / 2
                 }
@@ -107,6 +103,7 @@ struct HomeView: View {
         }
     }
 }
+
 struct GenreScrollView: View {
     let genres: [Genre]
     @ObservedObject var controller: AnimeController // Assurez-vous d'avoir cela

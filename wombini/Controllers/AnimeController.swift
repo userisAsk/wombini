@@ -29,6 +29,36 @@ class AnimeController: ObservableObject {
             .assign(to: &$animeList)
     }
     
+    func fetchNewestAnimeData() {
+        guard let url = URL(string: "https://api.jikan.moe/v4/seasons/now") else { return }
+        
+        URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .decode(type: AnimeListResponse.self, decoder: JSONDecoder())
+            .map { $0.animes }
+            .replaceError(with: [])
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$animeList)
+    }
+
+    func fetchAnimeRecommendations() {
+        guard let url = URL(string: "https://api.jikan.moe/v4/recommendations/anime") else { return }
+
+        URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .decode(type: AnimeListResponse.self, decoder: JSONDecoder())
+            .map { $0.animes }
+            .replaceError(with: [])
+            .handleEvents(receiveOutput: { animes in
+                print("Fetched anime recommendations: \(animes)")
+            })
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$animeList)
+    }
+
+
+
+    
     
     func fetchCurrentSeason() {
            guard let url = URL(string: "https://api.jikan.moe/v4/seasons/now") else { return }
@@ -56,19 +86,6 @@ class AnimeController: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: &$animeList)
     }
-    
-
-    func fetchAnimeRecommendations() {
-           guard let url = URL(string: "https://api.jikan.moe/v4/recommendations/anime") else { return }
-
-           URLSession.shared.dataTaskPublisher(for: url)
-               .map { $0.data }
-               .decode(type: AnimeListResponse.self, decoder: JSONDecoder())
-               .map { $0.animes }
-               .replaceError(with: [])
-               .receive(on: DispatchQueue.main)
-               .assign(to: &$animeList)
-       }
     
     func fetchTopRatedAnimeData() {
            guard let url = URL(string: "https://api.jikan.moe/v4/top/anime") else { return }

@@ -16,5 +16,4 @@ struct Anime: Codable, Identifiable {
     }
     
     
-
 }

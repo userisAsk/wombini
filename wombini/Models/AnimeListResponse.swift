@@ -1,4 +1,5 @@
 struct AnimeListResponse: Codable {
+    
     struct AnimeData: Codable {
         let mal_id: Int
         let title: String
@@ -50,7 +51,6 @@ struct AnimeListResponse: Codable {
         }
     }
 }
-
 
 struct EpisodeResponse: Codable {
     let data: [Episode]
@@ -110,4 +110,3 @@ struct Score: Codable {
     let score, votes: Int
     let percentage: Double
 }
-
