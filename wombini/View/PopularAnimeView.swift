@@ -26,16 +26,22 @@ struct PopularAnimeView: View {
             }
             .padding()
 
-            Button("Fetch Popular Anime") {
-                animeController.fetchPopularAnimeBySeason(year: selectedYear, season: selectedSeason)
-            }
-            .padding()
-
             ScrollView {
                 AnimeGridView(animeList: animeController.animeList)
                     .padding()
             }
         }
         .navigationTitle("Popular Anime by Season")
+        .onAppear {
+            // Automatically fetch data when the view appears
+            animeController.fetchPopularAnimeBySeason(year: selectedYear, season: selectedSeason)
+        }
+        // Fetch data automatically when the user changes the year or season
+        .onChange(of: selectedYear) { newYear in
+            animeController.fetchPopularAnimeBySeason(year: newYear, season: selectedSeason)
+        }
+        .onChange(of: selectedSeason) { newSeason in
+            animeController.fetchPopularAnimeBySeason(year: selectedYear, season: newSeason)
+        }
     }
 }
