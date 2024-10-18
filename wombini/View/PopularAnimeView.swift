@@ -25,7 +25,7 @@ struct PopularAnimeView: View {
                 // Search bar for anime search
                 TextField("Search Anime", text: $searchText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                    .padding().accessibilityIdentifier("SearchAnimeField")  // Add an identifier for the search field
 
                 HStack {
                     Picker("Year", selection: $selectedYear) {
