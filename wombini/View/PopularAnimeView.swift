@@ -20,79 +20,61 @@ struct PopularAnimeView: View {
     }
 
     var body: some View {
-        VStack {
-            // Search bar for anime search
-            TextField("Search Anime", text: $searchText)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+        NavigationView {
+            VStack {
+                // Search bar for anime search
+                TextField("Search Anime", text: $searchText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
 
-            HStack {
-                Picker("Year", selection: $selectedYear) {
-                    ForEach((2000...Calendar.current.component(.year, from: Date())), id: \.self) { year in
-                        Text("\(year)")  // Correct formatting of year (no extra commas)
-                            .tag(year)
+                HStack {
+                    Picker("Year", selection: $selectedYear) {
+                        ForEach((2000...Calendar.current.component(.year, from: Date())), id: \.self) { year in
+                            Text("\(year)")  // Correct formatting of year (no extra commas)
+                                .tag(year)
+                        }
                     }
-                }
-                .pickerStyle(MenuPickerStyle())
+                    .pickerStyle(MenuPickerStyle())
 
-                Picker("Season", selection: $selectedSeason) {
-                    ForEach(seasons, id: \.self) { season in
-                        Text(season.capitalized).tag(season)
+                    Picker("Season", selection: $selectedSeason) {
+                        ForEach(seasons, id: \.self) { season in
+                            Text(season.capitalized).tag(season)
+                        }
                     }
-                }
-                .pickerStyle(SegmentedPickerStyle())
-            }
-            .padding()
-
-            // Scroll view for anime grid
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-                    ForEach(filteredAnimeList) { anime in
-                        AnimeCardView(anime: anime)  // Use consistent card style
-                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
                 .padding()
+
+                // Scroll view for anime grid
+                ScrollView {
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                        ForEach(filteredAnimeList) { anime in
+                            NavigationLink(destination: AnimeDetailView(anime: anime)) {
+                                AnimeCardView(anime: anime)  // Use consistent card style
+                            }
+                            .buttonStyle(PlainButtonStyle())  // Prevent default button styling
+                        }
+                    }
+                    .padding()
+                }
             }
-        }
-        .navigationTitle("Popular Anime by Season")
-        .onAppear {
-            // Automatically fetch data when the view appears
-            animeController.fetchPopularAnimeBySeason(year: selectedYear, season: selectedSeason)
-        }
-        // Fetch data automatically when the user changes the year or season
-        .onChange(of: selectedYear) { newYear in
-            animeController.fetchPopularAnimeBySeason(year: newYear, season: selectedSeason)
-        }
-        .onChange(of: selectedSeason) { newSeason in
-            animeController.fetchPopularAnimeBySeason(year: selectedYear, season: newSeason)
+            .navigationTitle("Popular Anime by Season")
+            .onAppear {
+                // Automatically fetch data when the view appears
+                animeController.fetchPopularAnimeBySeason(year: selectedYear, season: selectedSeason)
+            }
+            // Fetch data automatically when the user changes the year or season
+            .onChange(of: selectedYear) { newYear in
+                animeController.fetchPopularAnimeBySeason(year: newYear, season: selectedSeason)
+            }
+            .onChange(of: selectedSeason) { newSeason in
+                animeController.fetchPopularAnimeBySeason(year: selectedYear, season: newSeason)
+            }
         }
     }
 }
 
-    // A reusable anime card view for consistency in style
-    struct AnimeCardView: View {
-        let anime: Anime
-
-        var body: some View {
-            VStack {
-                AsyncImage(url: URL(string: anime.images.jpg.image_url)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 150, height: 220)  // Fixed size for uniform cards
-                        .clipped()
-                } placeholder: {
-                    ProgressView()
-                        .frame(width: 150, height: 220)
-                }
-            }
-            .background(Color.white)
-            .cornerRadius(8)
-            .shadow(radius: 5)
-            .frame(width: 150, height: 280)  // Ensure uniform card size
-        }
-    }
-
+// A helper function to determine the current season based on the month
 func getCurrentSeason() -> String {
     let month = Calendar.current.component(.month, from: Date())
     switch month {
@@ -106,5 +88,29 @@ func getCurrentSeason() -> String {
         return "fall"
     default:
         return "spring"  // Default case, though this shouldn't happen
+    }
+}
+
+// AnimeCardView for consistent style and layout
+struct AnimeCardView: View {
+    let anime: Anime
+
+    var body: some View {
+        VStack {
+            AsyncImage(url: URL(string: anime.images.jpg.image_url)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 150, height: 220)
+                    .clipped()
+            } placeholder: {
+                ProgressView()
+                    .frame(width: 150, height: 220)
+            }
+        }
+        .background(Color.white)
+        .cornerRadius(8)
+        .shadow(radius: 5)
+        .frame(width: 150, height: 280)
     }
 }
