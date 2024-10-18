@@ -11,10 +11,7 @@ struct Genre: Identifiable {
 }
 
 struct HomeView: View {
-    @State private var selectedTab: Tab = .house
-    init() {
-        UITabBar.appearance().isHidden = true
-    }
+    @State private var selectedTab: Tab? = .house
     @StateObject private var controller = AnimeController()
     @State private var currentIndex: Int = 0
     
@@ -39,7 +36,7 @@ struct HomeView: View {
                 Color.customBackgroundColor
                     .edgesIgnoringSafeArea(.all)
 
-                VStack {
+                VStack(spacing: 0) {
                     ScrollView {
                         VStack {
                             // Logo
@@ -92,20 +89,38 @@ struct HomeView: View {
                             
                             // Affichage de tous les animes
                             AnimeGridView(animeList: controller.animeList)
-
-                            Spacer() // Espace supplémentaire pour pousser le MainTabView vers le bas
                         }
-                        .padding(.bottom)
-                        
+                        .padding(.bottom, 100) // Add padding for the sticky buttons
                     }
-                    MainTabView(selectedTab: $selectedTab) // Positionné en bas de l'écran
-                        .padding(.bottom) // Ajustez la marge selon vos besoins
-            
+                    
+                    Spacer(minLength: 0)
+                    
+                    // New sticky buttons
+                    HStack {
+                        NavigationLink(destination: ScheduleView()) {
+                            Text("Open Schedule")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                        }
+                        
+                        NavigationLink(destination: PopularAnimeView()) {
+                            Text("Trending")
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.green)
+                                .foregroundColor(.white)
+                                .cornerRadius(8)
+                        }
+                        .accessibilityIdentifier("trendingButton")
+                    }
+                    .padding()
                 }
-        
             }
             .onAppear {
-                controller.fetchAllAnimeData() // Chargement initial des données
+                controller.fetchAllAnimeData()
 
                 if !controller.animeList.isEmpty {
                     currentIndex = controller.animeList.count / 2
@@ -114,6 +129,7 @@ struct HomeView: View {
         }
     }
 }
+
 
 
 

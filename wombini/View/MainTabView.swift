@@ -1,10 +1,3 @@
-//
-//  MainTabView.swift
-//  wombini
-//
-//  Created by Kyriann Paille on 18/10/2024.
-//
-
 import Foundation
 import SwiftUI
 
@@ -15,40 +8,56 @@ enum Tab: String, CaseIterable {
 }
 
 struct MainTabView: View {
-    @Binding var selectedTab: Tab
+    @Binding var selectedTab: Tab?  // Changement ici pour être optionnel
     private var fillImage: String {
-        selectedTab.rawValue + ".fill"
+        selectedTab?.rawValue ?? "" + ".fill"
     }
-    
-    
     
     var body: some View {
         VStack {
             HStack {
-                ForEach(Tab.allCases, id: \.rawValue){tab in
+                ForEach(Tab.allCases, id: \.rawValue) { tab in
                     Spacer()
-                    Image(systemName: selectedTab == tab ? fillImage : tab.rawValue)
-                        .scaleEffect(tab == selectedTab ? 1.25 :  1.0)
-                        .onTapGesture {
-                            withAnimation(.easeIn(duration: 0.1)) {
-                                selectedTab = tab
-                            }
-                        }
                     
+                    // Utilisation de NavigationLink pour naviguer vers les différentes vues
+                    NavigationLink(destination: destinationView(for: tab), tag: tab, selection: $selectedTab) {
+                        Image(systemName: selectedTab == tab ? fillImage : tab.rawValue)
+                            .scaleEffect(tab == selectedTab ? 1.25 : 1.0)
+                            .onTapGesture {
+                                withAnimation(.easeIn(duration: 0.1)) {
+                                    selectedTab = tab
+                                }
+                            }
+                    }
                     
                     Spacer()
                 }
             }
-            .frame(width: nil, height: 60)
+            .frame(height: 60)
             .background(.thinMaterial)
             .cornerRadius(10)
             .padding()
+        }
+    }
+    
+    // Fonction pour retourner la vue correspondante à l'onglet sélectionné
+    @ViewBuilder
+    private func destinationView(for tab: Tab) -> some View {
+        switch tab {
+        case .house:
+            HomeView()
+        case .message:
+            PopularAnimeView() // Remplacez ceci par votre vue de popular anime
+        case .person:
+            ScheduleView() // Remplacez ceci par votre vue de personne
         }
     }
 }
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView(selectedTab: .constant(.house))
+        NavigationView {
+            MainTabView(selectedTab: .constant(.house)) // Ici, vous pouvez garder .house car c'est un Binding
+        }
     }
 }
