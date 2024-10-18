@@ -83,4 +83,21 @@ class AnimeController: ObservableObject {
        }
     
     
+    func fetchAnimeByGenre(genre: String) {
+        guard let url = URL(string: "https://api.jikan.moe/v4/genres/anime/\(genre)") else { return }
+        
+        URLSession.shared.dataTaskPublisher(for: url)
+            .map { $0.data }
+            .decode(type: AnimeListResponse.self, decoder: JSONDecoder())
+            .map { $0.animes }
+            .replaceError(with: [])
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$animeList)
+    }
+
+    
+    
+    
+    
+    
 }

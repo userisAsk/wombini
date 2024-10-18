@@ -26,7 +26,6 @@ struct AnimeListResponse: Codable {
     }
 
     
-    
     let data: [AnimeData]
 
     var animes: [Anime] {

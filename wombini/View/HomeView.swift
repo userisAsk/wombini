@@ -13,6 +13,7 @@ struct Genre: Identifiable {
 struct HomeView: View {
     @StateObject private var controller = AnimeController()
     @State private var currentIndex: Int = 0
+    
     private var timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
 
     let genres: [Genre] = [
@@ -79,8 +80,8 @@ struct HomeView: View {
                         }
 
                         // Genre List
-                        GenreScrollView(genres: genres)
-                        
+                        GenreScrollView(genres: genres, controller: controller) // Passe le contrôleur ici
+
                         // Filter Buttons
                         FilterButtonsView(controller: controller)
                         
@@ -106,10 +107,10 @@ struct HomeView: View {
         }
     }
 }
-
 struct GenreScrollView: View {
     let genres: [Genre]
-    
+    @ObservedObject var controller: AnimeController // Assurez-vous d'avoir cela
+
     var body: some View {
         VStack {
             Text("Genres")
@@ -121,7 +122,7 @@ struct GenreScrollView: View {
                 HStack(spacing: 15) {
                     ForEach(genres) { genre in
                         Button(action: {
-                            print("Selected genre: \(genre.name)")
+                            controller.fetchAnimeByGenre(genre: genre.name) // Utilisation de genre.name
                         }) {
                             Text(genre.name)
                                 .foregroundColor(.white)
@@ -140,6 +141,8 @@ struct GenreScrollView: View {
     }
 }
 
+
+
 struct FilterButtonsView: View {
     @ObservedObject var controller: AnimeController
     
@@ -149,7 +152,7 @@ struct FilterButtonsView: View {
                 Button(action: {
                     switch filter {
                     case "Newest":
-                        controller.fetchCurrentSeason()
+                        controller.fetchCurrentSeason ()
                     case "Top Rated":
                         controller.fetchTopRatedAnimeData()
                     case "Recommendations":

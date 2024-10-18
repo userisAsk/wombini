@@ -28,6 +28,8 @@ struct AnimeGridView: View {
                             .font(.headline)
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
+                            .lineLimit(1) // Limite à une ligne
+                            .truncationMode(.tail) // Troncature au bout du texte
                         
                         // Affichez l'année de sortie
                         Text(anime.releaseDate)
