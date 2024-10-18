@@ -1,23 +1,19 @@
-import Foundation
+struct Anime: Codable, Identifiable {
+    let id: Int
+    let title: String
+    let images: AnimeImages
+    let releaseDate: String // Added for release date
+    let score: Double? // Added for popularity score
+    let seasonYear: String? // Added for season year
+    let synopsis: String?
 
-struct AnimeResponse: Codable {
-    let data: AnimeData?
-}
-
-struct AnimeData: Codable {
-    let Media: AnimeModel
-}
-
-struct AnimeModel: Codable {
-    let title: AnimeTitle
-    let description: String
-    let coverImage: AnimeCoverImage
-
-    struct AnimeTitle: Codable {
-        let romaji: String
+    struct AnimeImages: Codable {
+        let jpg: ImageURL
     }
 
-    struct AnimeCoverImage: Codable {
-        let large: String
+    struct ImageURL: Codable {
+        let image_url: String
     }
+    
+    
 }

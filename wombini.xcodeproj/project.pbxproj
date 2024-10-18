@@ -7,25 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		352EE2682CA6D73300F2FB9E /* AnimeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352EE2672CA6D73300F2FB9E /* AnimeDetailView.swift */; };
 		3549E82A2C941F72009A4672 /* wombiniApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549E8292C941F72009A4672 /* wombiniApp.swift */; };
-		3549E82C2C941F72009A4672 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549E82B2C941F72009A4672 /* ContentView.swift */; };
 		3549E82E2C941F74009A4672 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3549E82D2C941F74009A4672 /* Assets.xcassets */; };
 		3549E8312C941F74009A4672 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3549E8302C941F74009A4672 /* Preview Assets.xcassets */; };
 		3549E83B2C941F74009A4672 /* wombiniTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549E83A2C941F74009A4672 /* wombiniTests.swift */; };
 		3549E8452C941F74009A4672 /* wombiniUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549E8442C941F74009A4672 /* wombiniUITests.swift */; };
 		3549E8472C941F74009A4672 /* wombiniUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549E8462C941F74009A4672 /* wombiniUITestsLaunchTests.swift */; };
-		3549E8562C942A0B009A4672 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549E8552C942A0B009A4672 /* SplashScreenView.swift */; };
-		3549E8582C94421D009A4672 /* CustomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3549E8572C94421D009A4672 /* CustomBarView.swift */; };
-		35A754592C94671E00666245 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A754582C94671E00666245 /* ProfileView.swift */; };
-		35A7545B2C946B4100666245 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7545A2C946B4100666245 /* FavoriteView.swift */; };
-		35A7545D2C946BD400666245 /* TrendingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7545C2C946BD400666245 /* TrendingView.swift */; };
-		35A7545F2C946BE600666245 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A7545E2C946BE600666245 /* ScheduleView.swift */; };
-		35A754652C94738000666245 /* TabBarContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A754642C94738000666245 /* TabBarContainer.swift */; };
 		35A754672C9477BB00666245 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35A754662C9477BB00666245 /* HomeView.swift */; };
-		B5E128FE2CA68D9300768757 /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E128FD2CA68D9300768757 /* Anime.swift */; };
-		B5E129012CA68E0200768757 /* AnimeAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E129002CA68E0200768757 /* AnimeAPIService.swift */; };
-		B5E129032CA68F5000768757 /* AnimeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E129022CA68F5000768757 /* AnimeListViewController.swift */; };
+		35BC30DA2CA7FE8F00D1E488 /* AnimeGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BC30D92CA7FE8F00D1E488 /* AnimeGridView.swift */; };
+		B511C2052CA7F89200409DE4 /* Anime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2042CA7F89200409DE4 /* Anime.swift */; };
+		B511C2072CA7F8A300409DE4 /* AnimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2062CA7F8A300409DE4 /* AnimeController.swift */; };
+		B511C2092CA7F8B200409DE4 /* AnimeListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2082CA7F8B200409DE4 /* AnimeListResponse.swift */; };
+		B511C20B2CA7F8CA00409DE4 /* AnimeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C20A2CA7F8CA00409DE4 /* AnimeDetailView.swift */; };
+		B511C2132CA809A100409DE4 /* PopularAnimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2122CA809A100409DE4 /* PopularAnimeView.swift */; };
+		B539307D2CC2589500D87404 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B539307C2CC2589500D87404 /* ScheduleView.swift */; };
+		B53930832CC269DD00D87404 /* wombiniUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53930822CC269DD00D87404 /* wombiniUnitTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,10 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		352EE2672CA6D73300F2FB9E /* AnimeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailView.swift; sourceTree = "<group>"; };
 		3549E8262C941F72009A4672 /* wombini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wombini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3549E8292C941F72009A4672 /* wombiniApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wombiniApp.swift; sourceTree = "<group>"; };
-		3549E82B2C941F72009A4672 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3549E82D2C941F74009A4672 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3549E8302C941F74009A4672 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3549E8362C941F74009A4672 /* wombiniTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wombiniTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,17 +51,15 @@
 		3549E8402C941F74009A4672 /* wombiniUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wombiniUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3549E8442C941F74009A4672 /* wombiniUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wombiniUITests.swift; sourceTree = "<group>"; };
 		3549E8462C941F74009A4672 /* wombiniUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wombiniUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		3549E8552C942A0B009A4672 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		3549E8572C94421D009A4672 /* CustomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBarView.swift; sourceTree = "<group>"; };
-		35A754582C94671E00666245 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		35A7545A2C946B4100666245 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
-		35A7545C2C946BD400666245 /* TrendingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingView.swift; sourceTree = "<group>"; };
-		35A7545E2C946BE600666245 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
-		35A754642C94738000666245 /* TabBarContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContainer.swift; sourceTree = "<group>"; };
 		35A754662C9477BB00666245 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		B5E128FD2CA68D9300768757 /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
-		B5E129002CA68E0200768757 /* AnimeAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeAPIService.swift; sourceTree = "<group>"; };
-		B5E129022CA68F5000768757 /* AnimeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListViewController.swift; sourceTree = "<group>"; };
+		35BC30D92CA7FE8F00D1E488 /* AnimeGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeGridView.swift; sourceTree = "<group>"; };
+		B511C2042CA7F89200409DE4 /* Anime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anime.swift; sourceTree = "<group>"; };
+		B511C2062CA7F8A300409DE4 /* AnimeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeController.swift; sourceTree = "<group>"; };
+		B511C2082CA7F8B200409DE4 /* AnimeListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListResponse.swift; sourceTree = "<group>"; };
+		B511C20A2CA7F8CA00409DE4 /* AnimeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailView.swift; sourceTree = "<group>"; };
+		B511C2122CA809A100409DE4 /* PopularAnimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularAnimeView.swift; sourceTree = "<group>"; };
+		B539307C2CC2589500D87404 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		B53930822CC269DD00D87404 /* wombiniUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wombiniUnitTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +110,7 @@
 		3549E8282C941F72009A4672 /* wombini */ = {
 			isa = PBXGroup;
 			children = (
+				3549E8292C941F72009A4672 /* wombiniApp.swift */,
 				357CCFAC2CA6967D0087617F /* View */,
 				B5E128FC2CA68CC600768757 /* Controllers */,
 				B5E128FB2CA68C5900768757 /* Models */,
@@ -148,6 +141,7 @@
 			children = (
 				3549E8442C941F74009A4672 /* wombiniUITests.swift */,
 				3549E8462C941F74009A4672 /* wombiniUITestsLaunchTests.swift */,
+				B53930822CC269DD00D87404 /* wombiniUnitTests.swift */,
 			);
 			path = wombiniUITests;
 			sourceTree = "<group>";
@@ -155,17 +149,11 @@
 		357CCFAC2CA6967D0087617F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3549E8572C94421D009A4672 /* CustomBarView.swift */,
-				35A7545C2C946BD400666245 /* TrendingView.swift */,
-				3549E8292C941F72009A4672 /* wombiniApp.swift */,
-				3549E82B2C941F72009A4672 /* ContentView.swift */,
-				35A7545E2C946BE600666245 /* ScheduleView.swift */,
-				35A7545A2C946B4100666245 /* FavoriteView.swift */,
-				35A754642C94738000666245 /* TabBarContainer.swift */,
 				35A754662C9477BB00666245 /* HomeView.swift */,
-				35A754582C94671E00666245 /* ProfileView.swift */,
-				3549E8552C942A0B009A4672 /* SplashScreenView.swift */,
-				352EE2672CA6D73300F2FB9E /* AnimeDetailView.swift */,
+				B511C20A2CA7F8CA00409DE4 /* AnimeDetailView.swift */,
+				35BC30D92CA7FE8F00D1E488 /* AnimeGridView.swift */,
+				B511C2122CA809A100409DE4 /* PopularAnimeView.swift */,
+				B539307C2CC2589500D87404 /* ScheduleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,8 +161,8 @@
 		B5E128FB2CA68C5900768757 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B5E128FD2CA68D9300768757 /* Anime.swift */,
-				B5E129002CA68E0200768757 /* AnimeAPIService.swift */,
+				B511C2082CA7F8B200409DE4 /* AnimeListResponse.swift */,
+				B511C2042CA7F89200409DE4 /* Anime.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,7 +170,7 @@
 		B5E128FC2CA68CC600768757 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B5E129022CA68F5000768757 /* AnimeListViewController.swift */,
+				B511C2062CA7F8A300409DE4 /* AnimeController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -317,20 +305,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				352EE2682CA6D73300F2FB9E /* AnimeDetailView.swift in Sources */,
-				35A7545D2C946BD400666245 /* TrendingView.swift in Sources */,
-				3549E82C2C941F72009A4672 /* ContentView.swift in Sources */,
-				3549E8582C94421D009A4672 /* CustomBarView.swift in Sources */,
 				35A754672C9477BB00666245 /* HomeView.swift in Sources */,
-				35A754592C94671E00666245 /* ProfileView.swift in Sources */,
-				35A754652C94738000666245 /* TabBarContainer.swift in Sources */,
+				B511C2132CA809A100409DE4 /* PopularAnimeView.swift in Sources */,
 				3549E82A2C941F72009A4672 /* wombiniApp.swift in Sources */,
-				35A7545F2C946BE600666245 /* ScheduleView.swift in Sources */,
-				35A7545B2C946B4100666245 /* FavoriteView.swift in Sources */,
-				B5E129032CA68F5000768757 /* AnimeListViewController.swift in Sources */,
-				B5E129012CA68E0200768757 /* AnimeAPIService.swift in Sources */,
-				3549E8562C942A0B009A4672 /* SplashScreenView.swift in Sources */,
-				B5E128FE2CA68D9300768757 /* Anime.swift in Sources */,
+				B511C20B2CA7F8CA00409DE4 /* AnimeDetailView.swift in Sources */,
+				B511C2092CA7F8B200409DE4 /* AnimeListResponse.swift in Sources */,
+				B539307D2CC2589500D87404 /* ScheduleView.swift in Sources */,
+				35BC30DA2CA7FE8F00D1E488 /* AnimeGridView.swift in Sources */,
+				B511C2072CA7F8A300409DE4 /* AnimeController.swift in Sources */,
+				B511C2052CA7F89200409DE4 /* Anime.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +331,7 @@
 			files = (
 				3549E8472C941F74009A4672 /* wombiniUITestsLaunchTests.swift in Sources */,
 				3549E8452C941F74009A4672 /* wombiniUITests.swift in Sources */,
+				B53930832CC269DD00D87404 /* wombiniUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

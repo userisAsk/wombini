@@ -1,41 +1,47 @@
-//
-//  wombiniUITests.swift
-//  wombiniUITests
-//
-//  Created by Kyriann Paille on 13/09/2024.
-//
-
 import XCTest
 
-final class wombiniUITests: XCTestCase {
-
+class AnimePopularViewUITests: XCTestCase {
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+            continueAfterFailure = false
 
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
+            // Launch the application
+            let app = XCUIApplication()
+            app.launch()
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
+            // Ensure the device is in portrait orientation
+            let device = XCUIDevice.shared
+            if device.orientation != .portrait {
+                device.orientation = .portrait
+            }
+        }
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+
+    func testWaitForManualTapOnAnime() throws {
         let app = XCUIApplication()
-        app.launch()
+                app.launch()
+                
+        
+        // Perform a search
+        let searchField = app.textFields["SearchAnimeField"]
+        XCTAssertTrue(searchField.exists, "The search field should be present")
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // Input search text (e.g., "Dandadan")
+        searchField.tap()
+        searchField.typeText("Dandadan")
+        XCUIApplication().scrollViews.containing(.other, identifier:"Vertical scroll bar, 2 pages").children(matching: .other).element(boundBy: 0).children(matching: .other).element.tap()
+
+        // Check if the detail view is showing the correct anime title after manual tap
+                let detailTitle = app.staticTexts["Dandadan"]  // Replace "Dandadan" with the actual title in your detail view
+        
+
+        XCTAssertTrue(detailTitle.exists, "The detail view for the anime 'Dandadan' should be displayed")
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
+
+
 }

@@ -1,62 +1,115 @@
 import SwiftUI
-import Foundation
 
 struct AnimeDetailView: View {
-    var anime: AnimeModel // The anime model
-
+    @StateObject var animeController = AnimeController()
+    @State var episodes: [Episode] = []
+    @State var statistics: Welcome?
+    var anime: Anime
+    
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
-                    // Anime poster and title overlay
-                    ZStack(alignment: .bottomLeading) {
-                        // Display the anime poster
-                        if let url = anime.coverImage.large, let imageUrl = URL(string: url) {
-                            AsyncImage(url: imageUrl) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .padding(10)
-                                    .frame(width: UIScreen.main.bounds.width, height: 200)
-                                    .clipped()
-                            } placeholder: {
-                                ProgressView()
-                            }
-                        }
-
-                        // Add a semi-transparent overlay for the title
-                        VStack(alignment: .leading) {
-                            Text(anime.title.romaji)
-                                .font(.system(size: 30, weight: .bold))
-                                .foregroundColor(.white)
-                                .padding(.bottom, 10)
-                                .padding(.leading, 10)
-                        }
-                        .frame(width: UIScreen.main.bounds.width, height: 80, alignment: .leading)
-              
-                    }
-                    .frame(height: 300)
-                    .shadow(color: Color.black.opacity(0.6), radius: 20, x: 0, y: 10) // Apply drop shadow at the bottom
-
-                    // Anime description
-                    if let description = anime.description {
-                        Text(description)
-                            .font(.body)
-                            .foregroundColor(.gray)
-                            .padding(.horizontal)
-                    } else {
-                        Text("Pas de description disponible.")
-                            .font(.body)
-                            .foregroundColor(.gray)
-                            .padding(.horizontal)
-                    }
-
-                    Spacer()
+        ScrollView {
+            VStack(alignment: .leading) {
+                AsyncImage(url: URL(string: anime.images.jpg.image_url)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: .infinity)
+                        .cornerRadius(10)
+                } placeholder: {
+                    ProgressView()
                 }
-                .padding(.top) // Add top padding
+                
+                Text(anime.title)
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .padding(.top)
+                
+                Text("Année de sortie : \(anime.releaseDate)")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+                
+                if let synopsis = anime.synopsis {
+                    Text("Synopsis :")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.top)
+                    Text(synopsis)
+                        .foregroundColor(.white)
+                        .padding(.top)
+                }
+                
+                // Affichage des épisodes
+                if !episodes.isEmpty {
+                    Text("Épisodes :")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.top)
+                    ForEach(episodes) { episode in
+                        VStack(alignment: .leading) {
+                            Text(episode.title)
+                                .font(.subheadline)
+                                .foregroundColor(.white)
+                            Text("Date de diffusion : \(episode.aired ?? "N/A")")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                        .padding(.vertical, 5)
+                    }
+                } else {
+                    ProgressView("Chargement des épisodes...")
+                        .foregroundColor(.white)
+                }
+                
+                // Affichage du nombre total d'épisodes
+                Text("Nombre total d'épisodes : \(episodes.count)")
+                    .foregroundColor(.white)
+                    .padding(.top)
+
+                // Affichage des statistiques
+                if let statistics = statistics {
+                    Text("Statistiques :")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.top)
+
+                    VStack(alignment: .leading) {
+                        // Calcul et affichage de la note moyenne
+                        let totalVotes = statistics.data.scores.map { $0.votes }.reduce(0, +)
+                        let weightedScores = statistics.data.scores.reduce(0) { $0 + ($1.score * $1.votes) }
+                        
+                        let averageScore = totalVotes > 0 ? Double(weightedScores) / Double(totalVotes) : 0.0
+                        
+                        Text("Note moyenne : \(String(format: "%.1f", averageScore))")
+                            .foregroundColor(.white)
+
+                        // Affichage du nombre total de votes
+                        Text("Total de votes : \(totalVotes)")
+                            .foregroundColor(.white)
+                    }
+                } else {
+                    ProgressView("Chargement des statistiques...")
+                        .foregroundColor(.white)
+                }
+                
+                Spacer()
             }
-            .background(Color.customBackgroundColor.edgesIgnoringSafeArea(.all)) // Apply custom background
-            .navigationBarTitleDisplayMode(.inline) // Keep navigation title inline
+            .padding()
+            .background(Color.customBackgroundColor)
+            .navigationTitle(anime.title)
+            .navigationBarTitleDisplayMode(.inline)
+        }
+        .onAppear {
+            animeController.fetchAnimeEpisodes(animeId: anime.id) { fetchedEpisodes in
+                if let fetchedEpisodes = fetchedEpisodes {
+                    episodes = fetchedEpisodes
+                }
+            }
+            
+            animeController.getAnimeStatistics(id: "\(anime.id)") { animeStatisticsResponse in
+                if let stats = animeStatisticsResponse {
+                    statistics = stats
+                }
+            }
         }
     }
 }
