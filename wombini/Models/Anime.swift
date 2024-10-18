@@ -13,4 +13,6 @@ struct Anime: Codable, Identifiable {
     struct ImageURL: Codable {
         let image_url: String
     }
+        
+
 }

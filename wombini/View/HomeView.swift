@@ -29,12 +29,12 @@ struct HomeView: View {
     ]
 
     var body: some View {
-        NavigationView { // Ajoutez NavigationView ici
+        NavigationView {
             ZStack {
                 Color.customBackgroundColor
                     .edgesIgnoringSafeArea(.all)
 
-                ScrollView { // Wrap the VStack in a ScrollView
+                ScrollView {
                     VStack {
                         // Logo
                         HStack {
@@ -82,7 +82,7 @@ struct HomeView: View {
                         GenreScrollView(genres: genres)
                         
                         // Filter Buttons
-                        FilterButtonsView()
+                        FilterButtonsView(controller: controller)
                         
                         if !controller.animeList.isEmpty {
                             AnimeGridView(animeList: controller.animeList)
@@ -94,11 +94,10 @@ struct HomeView: View {
 
                         Spacer()
                     }
-                    .padding(.bottom) // Add padding to avoid content being cut off
+                    .padding(.bottom)
                 }
             }
             .onAppear {
-                controller.fetchAnimeData()
                 controller.fetchAllAnimeData()
                 if !controller.animeList.isEmpty {
                     currentIndex = controller.animeList.count / 2
@@ -107,7 +106,6 @@ struct HomeView: View {
         }
     }
 }
-
 
 struct GenreScrollView: View {
     let genres: [Genre]
@@ -143,10 +141,22 @@ struct GenreScrollView: View {
 }
 
 struct FilterButtonsView: View {
+    @ObservedObject var controller: AnimeController
+    
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(["Newest", "Popular", "Top Rated"], id: \.self) { filter in
+            ForEach(["Newest", "Recommendations", "Top Rated"], id: \.self) { filter in
                 Button(action: {
+                    switch filter {
+                    case "Newest":
+                        controller.fetchCurrentSeason()
+                    case "Top Rated":
+                        controller.fetchTopRatedAnimeData()
+                    case "Recommendations":
+                        controller.fetchAnimeRecommendations() // Ajoute cette ligne
+                    default:
+                        break
+                    }
                     print("\(filter) tapped")
                 }) {
                     Text(filter)
@@ -215,8 +225,6 @@ struct AnimeView: View {
             .padding()
         }
     }
-    
-
 }
 
 struct HomeView_Previews: PreviewProvider {

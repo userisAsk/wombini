@@ -18,7 +18,7 @@ class AnimeController: ObservableObject {
     }
 
     func fetchAllAnimeData() {
-        guard let url = URL(string: "https://api.jikan.moe/v4/anime") else { return }
+        guard let url = URL(string: "https://api.jikan.moe/v4/top/anime") else { return }
 
         URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
@@ -28,6 +28,21 @@ class AnimeController: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: &$animeList)
     }
+    
+    
+    func fetchCurrentSeason() {
+           guard let url = URL(string: "https://api.jikan.moe/v4/seasons/now") else { return }
+
+           URLSession.shared.dataTaskPublisher(for: url)
+               .map { $0.data }
+               .decode(type: AnimeListResponse.self, decoder: JSONDecoder())
+               .map { $0.animes }
+               .replaceError(with: [])
+               .receive(on: DispatchQueue.main)
+               .assign(to: &$animeList)
+       }
+    
+    
     
     func fetchPopularAnimeBySeason(year: Int, season: String) {
         let urlString = "https://api.jikan.moe/v4/seasons/\(year)/\(season)"
@@ -41,4 +56,31 @@ class AnimeController: ObservableObject {
             .receive(on: DispatchQueue.main)
             .assign(to: &$animeList)
     }
+    
+
+    func fetchAnimeRecommendations() {
+           guard let url = URL(string: "https://api.jikan.moe/v4/recommendations/anime") else { return }
+
+           URLSession.shared.dataTaskPublisher(for: url)
+               .map { $0.data }
+               .decode(type: AnimeListResponse.self, decoder: JSONDecoder())
+               .map { $0.animes }
+               .replaceError(with: [])
+               .receive(on: DispatchQueue.main)
+               .assign(to: &$animeList)
+       }
+    
+    func fetchTopRatedAnimeData() {
+           guard let url = URL(string: "https://api.jikan.moe/v4/top/anime") else { return }
+
+           URLSession.shared.dataTaskPublisher(for: url)
+               .map { $0.data }
+               .decode(type: AnimeListResponse.self, decoder: JSONDecoder())
+               .map { $0.animes }
+               .replaceError(with: [])
+               .receive(on: DispatchQueue.main)
+               .assign(to: &$animeList)
+       }
+    
+    
 }
