@@ -122,7 +122,7 @@ struct GenreScrollView: View {
                 HStack(spacing: 15) {
                     ForEach(genres) { genre in
                         Button(action: {
-                            controller.fetchAnimeByGenre(genre: genre.name) // Utilisation de genre.name
+                            //controller.fetchAnimeByGenre(genre: genre.name) // Utilisation de genre.name
                         }) {
                             Text(genre.name)
                                 .foregroundColor(.white)
