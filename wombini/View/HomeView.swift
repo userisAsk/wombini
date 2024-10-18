@@ -11,6 +11,10 @@ struct Genre: Identifiable {
 }
 
 struct HomeView: View {
+    @State private var selectedTab: Tab = .house
+    init() {
+        UITabBar.appearance().isHidden = true
+    }
     @StateObject private var controller = AnimeController()
     @State private var currentIndex: Int = 0
     
@@ -35,63 +39,70 @@ struct HomeView: View {
                 Color.customBackgroundColor
                     .edgesIgnoringSafeArea(.all)
 
-                ScrollView {
-                    VStack {
-                        // Logo
-                        HStack {
-                            Image("wblogo")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 200, height: 200)
-                                .padding(.leading, 20)
-                                .offset(x: -55, y: -10)
-                            Spacer()
-                        }
-
-                        // Slider for anime
-                        TabView(selection: $currentIndex) {
-                            if !controller.animeList.isEmpty {
-                                ForEach(controller.animeList.indices, id: \.self) { index in
-                                    AnimeView(anime: controller.animeList[index])
-                                        .tag(index)
-                                }
-                            } else {
-                                Text("Aucun anime disponible.")
-                                    .foregroundColor(.white)
-                                    .font(.title)
+                VStack {
+                    ScrollView {
+                        VStack {
+                            // Logo
+                            HStack {
+                                Image("wblogo")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 200, height: 200)
+                                    .padding(.leading, 20)
+                                    .offset(x: -55, y: -10)
+                                Spacer()
                             }
-                        }
-                        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-                        .frame(height: 300)
-                        .onReceive(timer) { _ in
-                            if !controller.animeList.isEmpty {
-                                withAnimation(.easeInOut(duration: 0.5)) {
-                                    currentIndex = (currentIndex + 1) % controller.animeList.count
+
+                            // Slider for anime
+                            TabView(selection: $currentIndex) {
+                                if !controller.animeList.isEmpty {
+                                    ForEach(controller.animeList.indices, id: \.self) { index in
+                                        AnimeView(anime: controller.animeList[index])
+                                            .tag(index)
+                                    }
+                                } else {
+                                    Text("Aucun anime disponible.")
+                                        .foregroundColor(.white)
+                                        .font(.title)
                                 }
                             }
+                            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                            .frame(height: 300)
+                            .onReceive(timer) { _ in
+                                if !controller.animeList.isEmpty {
+                                    withAnimation(.easeInOut(duration: 0.5)) {
+                                        currentIndex = (currentIndex + 1) % controller.animeList.count
+                                    }
+                                }
+                            }
+
+                            // Page Control
+                            HStack {
+                                Spacer()
+                                PageControl(numberOfPages: controller.animeList.count, currentPage: $currentIndex)
+                                    .frame(width: UIScreen.main.bounds.width * 0.95)
+                                Spacer()
+                            }
+
+                            // Genre List
+                            GenreScrollView(genres: genres, controller: controller)
+
+                            // Filter Buttons
+                            FilterButtonsView(controller: controller)
+                            
+                            // Affichage de tous les animes
+                            AnimeGridView(animeList: controller.animeList)
+
+                            Spacer() // Espace supplémentaire pour pousser le MainTabView vers le bas
                         }
-
-                        // Page Control
-                        HStack {
-                            Spacer()
-                            PageControl(numberOfPages: controller.animeList.count, currentPage: $currentIndex)
-                                .frame(width: UIScreen.main.bounds.width * 0.95)
-                            Spacer()
-                        }
-
-                        // Genre List
-                        GenreScrollView(genres: genres, controller: controller) // Passe le contrôleur ici
-
-                        // Filter Buttons
-                        FilterButtonsView(controller: controller)
+                        .padding(.bottom)
                         
-                        // Affichage de tous les animes
-                        AnimeGridView(animeList: controller.animeList)
-
-                        Spacer()
                     }
-                    .padding(.bottom)
+                    MainTabView(selectedTab: $selectedTab) // Positionné en bas de l'écran
+                        .padding(.bottom) // Ajustez la marge selon vos besoins
+            
                 }
+        
             }
             .onAppear {
                 controller.fetchAllAnimeData() // Chargement initial des données
@@ -103,6 +114,8 @@ struct HomeView: View {
         }
     }
 }
+
+
 
 struct GenreScrollView: View {
     let genres: [Genre]

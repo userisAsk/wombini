@@ -96,8 +96,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
             endingLineNumber = "127"
-            landmarkName = "getAnimeMoreInfo(animeId:completion:)"
-            landmarkType = "7">
+            landmarkName = "AnimeController"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "66990A71-8C51-4B73-B3BB-12C33422286B - 47f3e5b46527d22"
@@ -144,8 +144,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "126"
             endingLineNumber = "126"
-            landmarkName = "getAnimeMoreInfo(animeId:completion:)"
-            landmarkType = "7">
+            landmarkName = "AnimeController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
