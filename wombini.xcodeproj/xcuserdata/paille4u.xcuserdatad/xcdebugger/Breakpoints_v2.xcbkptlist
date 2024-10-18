@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "D95D3F87-A7E8-43C8-A774-0F799D104C16"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6066DFB3-0BF5-42E4-94CA-789D707FF560"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wombini/Controllers/AnimeController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "getAnimeMoreInfo(animeId:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6066DFB3-0BF5-42E4-94CA-789D707FF560 - da7caddbf112b98a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in wombini.AnimeController.getAnimeStatistics(id: Swift.String, completion: (Swift.Optional&lt;wombini.Welcome&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "wombini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paille4u/Documents/wombini-rework/wombini/Controllers/AnimeController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "147"
+                  endingLineNumber = "147"
+                  offsetFromSymbolStart = "661">
+               </Location>
+               <Location
+                  uuid = "6066DFB3-0BF5-42E4-94CA-789D707FF560 - da7caddbf112b98a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in wombini.AnimeController.getAnimeStatistics(id: Swift.String, completion: (Swift.Optional&lt;wombini.Welcome&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "wombini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paille4u/Documents/wombini-rework/wombini/Controllers/AnimeController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "147"
+                  endingLineNumber = "147"
+                  offsetFromSymbolStart = "731">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E78B3C5-22F8-4195-9A96-10EEC12D6754"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wombini/Controllers/AnimeController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
+            landmarkName = "getAnimeMoreInfo(animeId:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9411C320-4168-4B41-B0CD-D9B1D0B88084"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wombini/Controllers/AnimeController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "getAnimeMoreInfo(animeId:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "66990A71-8C51-4B73-B3BB-12C33422286B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wombini/Controllers/AnimeController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "AnimeController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "66990A71-8C51-4B73-B3BB-12C33422286B - 47f3e5b46527d22"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "wombini.AnimeController.getAnimeStatistics(id: Swift.String, completion: (Swift.Optional&lt;wombini.Welcome&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "wombini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paille4u/Documents/wombini-rework/wombini/Controllers/AnimeController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "1044">
+               </Location>
+               <Location
+                  uuid = "66990A71-8C51-4B73-B3BB-12C33422286B - da7caddbf112ba25"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in wombini.AnimeController.getAnimeStatistics(id: Swift.String, completion: (Swift.Optional&lt;wombini.Welcome&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "wombini"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/paille4u/Documents/wombini-rework/wombini/Controllers/AnimeController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "1349">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "21360652-721A-4D84-8819-D7A02E1E1F09"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wombini/Controllers/AnimeController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "AnimeController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
