@@ -2,9 +2,8 @@ struct Anime: Codable, Identifiable {
     let id: Int
     let title: String
     let images: AnimeImages
-    let releaseDate: String // Added for release date
-    let score: Double? // Added for popularity score
-    let seasonYear: String? // Added for season year
+    let releaseDate: String
+    let score: Double?
 
     struct AnimeImages: Codable {
         let jpg: ImageURL
@@ -13,6 +12,4 @@ struct Anime: Codable, Identifiable {
     struct ImageURL: Codable {
         let image_url: String
     }
-        
-
 }
