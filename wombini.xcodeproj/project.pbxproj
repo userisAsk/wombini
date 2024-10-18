@@ -20,6 +20,7 @@
 		B511C2092CA7F8B200409DE4 /* AnimeListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2082CA7F8B200409DE4 /* AnimeListResponse.swift */; };
 		B511C20B2CA7F8CA00409DE4 /* AnimeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C20A2CA7F8CA00409DE4 /* AnimeDetailView.swift */; };
 		B511C2132CA809A100409DE4 /* PopularAnimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B511C2122CA809A100409DE4 /* PopularAnimeView.swift */; };
+		B539307D2CC2589500D87404 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B539307C2CC2589500D87404 /* ScheduleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		B511C2082CA7F8B200409DE4 /* AnimeListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeListResponse.swift; sourceTree = "<group>"; };
 		B511C20A2CA7F8CA00409DE4 /* AnimeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeDetailView.swift; sourceTree = "<group>"; };
 		B511C2122CA809A100409DE4 /* PopularAnimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularAnimeView.swift; sourceTree = "<group>"; };
+		B539307C2CC2589500D87404 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				B511C20A2CA7F8CA00409DE4 /* AnimeDetailView.swift */,
 				35BC30D92CA7FE8F00D1E488 /* AnimeGridView.swift */,
 				B511C2122CA809A100409DE4 /* PopularAnimeView.swift */,
+				B539307C2CC2589500D87404 /* ScheduleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				3549E82A2C941F72009A4672 /* wombiniApp.swift in Sources */,
 				B511C20B2CA7F8CA00409DE4 /* AnimeDetailView.swift in Sources */,
 				B511C2092CA7F8B200409DE4 /* AnimeListResponse.swift in Sources */,
+				B539307D2CC2589500D87404 /* ScheduleView.swift in Sources */,
 				35BC30DA2CA7FE8F00D1E488 /* AnimeGridView.swift in Sources */,
 				B511C2072CA7F8A300409DE4 /* AnimeController.swift in Sources */,
 				B511C2052CA7F89200409DE4 /* Anime.swift in Sources */,
